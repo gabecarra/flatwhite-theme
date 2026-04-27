@@ -1,4 +1,4 @@
-![logo](assets/flatwhite.png)
+![Java](https://raw.githubusercontent.com/gabecarra/flatwhite-theme/main/assets/flatwhite.png)
 
 ### A warm, minimal light theme for Visual Studio Code
 
@@ -12,17 +12,15 @@ Ported from one of my fav. ❤️ themes for Atom ([link](https://github.com/bil
 
 ### Js
 
-![alt text](screenshots/js.png)
+![Java](https://raw.githubusercontent.com/gabecarra/flatwhite-theme/main/screenshots/java.png)
 
 ### Python
 
-![alt text](screenshots/python.png)
+![Python](https://raw.githubusercontent.com/gabecarra/flatwhite-theme/main/screenshots/python.png)
 
 ### Java
 
-## ![alt text](screenshots/java.png)
-
----
+![Java](https://raw.githubusercontent.com/gabecarra/flatwhite-theme/main/screenshots/java.png)
 
 ## Installation
 
