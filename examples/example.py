@@ -84,17 +84,6 @@ def find_particle(
             return p
     return None
 
-for i in range (1234):{
-
- {
- print("this is a test ma boi")
- }
- {
-     {{{{{{{{{{{{{{{{{}}}}}}}}}}}}}}}}}
-     (((((((())))))))
- }   
-     
-}
 
 if __name__ == "__main__":
     particles = [
