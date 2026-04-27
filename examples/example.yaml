@@ -1,0 +1,63 @@
+# Flatwhite theme preview — YAML
+
+name: flatwhite
+version: "1.1.0"
+author: Gabriel H. Carraretto
+
+theme:
+  background: "#F7F3EE"
+  foreground: "#605A52"
+  accent: "#7A4E8A"
+  border-radius: 2px
+
+markers:
+  purple:
+    color: "rgba(206, 92, 255, 0.15)"
+    used-for: keywords
+  green:
+    color: "rgba(132, 189, 0, 0.19)"
+    used-for: strings
+  teal:
+    color: "rgba(0, 189, 163, 0.15)"
+    used-for: constants
+  blue:
+    color: "rgba(117, 163, 255, 0.20)"
+    used-for: keys
+  orange:
+    color: "rgba(240, 140, 0, 0.18)"
+    used-for: variables
+
+languages:
+  - id: javascript
+    maturity: full
+  - id: typescript
+    maturity: full
+  - id: python
+    maturity: full
+  - id: java
+    maturity: full
+  - id: rust
+    maturity: good
+    notes: raw strings not scanned
+  - id: go
+    maturity: good
+  - id: sql
+    maturity: good
+    case-insensitive: true
+
+server:
+  host: localhost
+  port: 3000
+  debug: false
+  timeout: 30
+  retries: 3
+  tls:
+    enabled: true
+    cert: /etc/ssl/cert.pem
+    key: /etc/ssl/key.pem
+
+feature-flags:
+  semantic-highlighting: true
+  inlay-hints: false
+  minimap: true
+  breadcrumbs: false

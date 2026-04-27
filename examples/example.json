@@ -1,0 +1,56 @@
+{
+  "name": "flatwhite-theme",
+  "version": "1.1.0",
+  "description": "A warm, minimal light theme for Visual Studio Code",
+  "license": "MIT",
+  "private": false,
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": ["Themes"],
+  "contributes": {
+    "themes": [
+      {
+        "label": "Flatwhite",
+        "uiTheme": "vs",
+        "path": "./themes/flatwhite-color-theme.json"
+      }
+    ]
+  },
+  "colors": {
+    "background": "#F7F3EE",
+    "foreground": "#605A52",
+    "purple": "rgba(206, 92, 255, 0.15)",
+    "green": "rgba(132, 189, 0, 0.19)",
+    "teal": "rgba(0, 189, 163, 0.15)",
+    "blue": "rgba(117, 163, 255, 0.20)",
+    "orange": "rgba(240, 140, 0, 0.18)"
+  },
+  "settings": {
+    "maxFileSize": 400000,
+    "debounceMs": 120,
+    "enabledLanguages": [
+      "javascript",
+      "typescript",
+      "python",
+      "java",
+      "json",
+      "yaml",
+      "rust",
+      "go",
+      "c",
+      "csharp",
+      "cpp",
+      "vb",
+      "sql",
+      "php",
+      "r",
+      "markdown"
+    ]
+  },
+  "stats": {
+    "downloads": 0,
+    "rating": null,
+    "featured": false
+  }
+}
