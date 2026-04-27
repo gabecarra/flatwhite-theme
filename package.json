@@ -1,0 +1,48 @@
+{
+  "name": "flatwhite-theme",
+  "displayName": "Flatwhite Theme",
+  "description": "Minimal warm light theme with marker-style syntax highlighting, ported from Atom flatwhite-syntax by Dmytro Biletskyy",
+  "version": "1.0.0",
+  "publisher": "gabriel-carraretto",
+  "author": {
+    "name": "Gabriel Carraretto",
+    "email": "gabriel.carraretto@gmail.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gabriel-carraretto/flatwhite-theme"
+  },
+  "homepage": "https://github.com/gabriel-carraretto/flatwhite-theme#readme",
+  "bugs": {
+    "url": "https://github.com/gabriel-carraretto/flatwhite-theme/issues"
+  },
+  "icon": "assets/icon.png",
+  "galleryBanner": {
+    "color": "#F7F3EE",
+    "theme": "light"
+  },
+  "keywords": [
+    "theme",
+    "color-theme",
+    "light",
+    "flatwhite",
+    "syntax",
+    "warm"
+  ],
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": ["Themes"],
+  "main": "./extension.js",
+  "activationEvents": ["onStartupFinished"],
+  "contributes": {
+    "themes": [
+      {
+        "label": "Flatwhite",
+        "uiTheme": "vs",
+        "path": "./themes/flatwhite-color-theme.json"
+      }
+    ]
+  }
+}
