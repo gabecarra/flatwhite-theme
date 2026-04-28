@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!--
+  Flatwhite theme preview — HTML
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flatwhite Theme</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+  </head>
+
+  <body class="light-theme" data-version="1.2.0">
+    <!-- Site header -->
+    <header role="banner">
+      <nav class="nav" aria-label="Main navigation">
+        <a class="nav__logo" href="/">
+          <img src="/assets/logo.svg" alt="Flatwhite" width="120" height="32" />
+        </a>
+        <ul class="nav__links" role="list">
+          <li><a href="/docs">Docs</a></li>
+          <li><a href="/examples">Examples</a></li>
+          <li><a href="/changelog" aria-current="page">Changelog</a></li>
+        </ul>
+        <button class="btn btn--ghost" type="button" aria-expanded="false" aria-controls="mobile-menu">
+          Menu
+        </button>
+      </nav>
+    </header>
+
+    <!-- Hero section -->
+    <main id="main-content">
+      <section class="hero" aria-labelledby="hero-heading">
+        <div class="container">
+          <h1 id="hero-heading" class="hero__title">
+            A warm, minimal VS&nbsp;Code theme
+          </h1>
+          <p class="hero__subtitle">
+            Marker-style syntax highlighting — color behind the code,
+            not&nbsp;in&nbsp;it.
+          </p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="/install">Install free</a>
+            <a class="btn btn--secondary" href="/preview">Live preview</a>
+          </div>
+        </div>
+        <figure class="hero__image" aria-hidden="true">
+          <img
+            src="/assets/preview.png"
+            alt=""
+            width="1200"
+            height="675"
+            loading="lazy"
+          />
+        </figure>
+      </section>
+
+      <!-- Features grid -->
+      <section class="features" aria-labelledby="features-heading">
+        <div class="container">
+          <h2 id="features-heading">Why Flatwhite?</h2>
+          <ul class="features__grid" role="list">
+            <li class="card">
+              <span class="card__icon" aria-hidden="true">&#128396;</span>
+              <h3 class="card__title">Marker highlights</h3>
+              <p class="card__body">
+                Keywords and strings get a soft background wash — like
+                highlighting a printed page — instead of jarring color changes.
+              </p>
+            </li>
+            <li class="card">
+              <span class="card__icon" aria-hidden="true">&#9728;</span>
+              <h3 class="card__title">6:1 contrast minimum</h3>
+              <p class="card__body">
+                Every color combination meets WCAG AA requirements so your eyes
+                never&nbsp;strain.
+              </p>
+            </li>
+            <li class="card">
+              <span class="card__icon" aria-hidden="true">&#127760;</span>
+              <h3 class="card__title">15+ languages</h3>
+              <p class="card__body">
+                JavaScript, TypeScript, Python, Rust, Go, PHP, and more — each
+                with a hand-tuned scanner.
+              </p>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer role="contentinfo">
+      <div class="container footer__inner">
+        <small>&copy; 2024 Gabriel Carraretto. MIT License.</small>
+        <ul class="footer__links" role="list">
+          <li><a href="https://github.com/gabecarra/flatwhite-theme">GitHub</a></li>
+          <li><a href="/privacy">Privacy</a></li>
+        </ul>
+      </div>
+    </footer>
+
+    <script type="module" src="/js/main.js"></script>
+  </body>
+</html>
