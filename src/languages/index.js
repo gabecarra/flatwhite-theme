@@ -17,6 +17,8 @@ const defs = [
   require("./php"),
   require("./r"),
   require("./markdown"),
+  require("./html"),
+  require("./css"),
 ];
 
 const KEYWORDS      = {};
