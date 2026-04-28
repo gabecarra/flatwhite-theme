@@ -7,6 +7,7 @@ const {
   scanSingleQuoted,
   scanTemplateLiteral,
 } = require("../scanner");
+const { applyKeys: applyJsxTags } = require("./html");
 
 const keywords = new Set([
   "async", "await", "break", "case", "catch", "class", "const", "continue",
@@ -39,4 +40,5 @@ module.exports = {
   keywords,
   langVars,
   scan,
+  applyKeys: applyJsxTags,
 };
