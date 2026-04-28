@@ -11,6 +11,6 @@ const COLORS = {
 const CONSTANTS =
   /\b(true|false|null|undefined|None|True|False|nil|NULL|NaN|Infinity)\b/g;
 const NUMBERS =
-  /\b(0[xX][0-9a-fA-F]+[lLuU]?|0[bB][01]+[lLuU]?|0[oO][0-7]+[lLuU]?|\d[\d_]*(?:\.[\d_]+)?(?:[eE][+-]?[\d_]+)?[fFdDlLuU]?)\b/g;
+  /\b(0[xX][0-9a-fA-F]+[lLuU]?|0[bB][01]+[lLuU]?|0[oO][0-7]+[lLuU]?|\d[\d_]*(?:\.[\d_]+)?(?:[eE][+-]?[\d_]+)?[fFdDlLuU]?)(?![\w.])/g;
 
 module.exports = { COLORS, CONSTANTS, NUMBERS };
