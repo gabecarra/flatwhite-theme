@@ -1,6 +1,7 @@
 {
   "name": "Flatwhite",
   "type": "light",
+  "semanticHighlighting": false,
   "$schema": "vscode://schemas/color-theme",
 
   "colors": {
@@ -226,7 +227,11 @@
         "keyword.operator.void",
         "keyword.operator.in",
         "keyword.operator.of",
-        "keyword.operator.instanceof"
+        "keyword.operator.instanceof",
+        "keyword.operator.logical",
+        "keyword.operator.logical.python",
+        "keyword.operator.word",
+        "keyword.operator.wordlike"
       ],
       "settings": {
         "foreground": "#614C61",
