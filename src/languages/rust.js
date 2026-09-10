@@ -17,6 +17,30 @@ const keywords = new Set([
 
 const langVars = /\b(self|Self)\b/g;
 
+// Raw string literals: r"...", r#"..."#, r##"..."## (also b-prefixed byte strings)
+function tryScanRawString(text, i, len) {
+  const prev = text[i - 1];
+  if (prev && /\w/.test(prev)) return null;
+  let j = i;
+  if (text[j] === "b") j++;
+  if (text[j] !== "r") return null;
+  j++;
+  let hashes = 0;
+  while (text[j] === "#") { hashes++; j++; }
+  if (text[j] !== '"') return null;
+  const start = i;
+  j++;
+  while (j < len) {
+    if (text[j] === '"') {
+      let k = j + 1, h = 0;
+      while (h < hashes && text[k] === "#") { k++; h++; }
+      if (h === hashes) { j = k; break; }
+    }
+    j++;
+  }
+  return [{ start, end: j, type: "string" }, j];
+}
+
 function scan(text) {
   const segs = [];
   const len = text.length;
@@ -25,6 +49,10 @@ function scan(text) {
     const ch = text[i], ch1 = text[i + 1];
     if (ch === "/" && ch1 === "*") { const [s, n] = scanBlockComment(text, i, len); segs.push(s); i = n; continue; }
     if (ch === "/" && ch1 === "/") { const [s, n] = scanLineComment(text, i, len); segs.push(s); i = n; continue; }
+    if (ch === "r" || (ch === "b" && ch1 === "r")) {
+      const raw = tryScanRawString(text, i, len);
+      if (raw) { segs.push(raw[0]); i = raw[1]; continue; }
+    }
     if (ch === '"')                { const [s, n] = scanDoubleQuoted(text, i, len); segs.push(s); i = n; continue; }
     if (ch === "'")                { const [s, n] = scanSingleQuoted(text, i, len); segs.push(s); i = n; continue; }
     i++;

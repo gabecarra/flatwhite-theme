@@ -12,16 +12,18 @@ Each language is a single file in `src/languages/`. The registry (`index.js`) pi
 | Java | `java` | Full | Text blocks (`"""`), block/line comments |
 | JSON / JSONC | `json`, `jsonc` | Full | Key highlighting (blue) |
 | YAML | `yaml` | Full | Key highlighting (blue), `#` comments |
-| Rust | `rust` | Good | Raw strings (`r"..."`, `r#"..."#`) not scanned |
+| Rust | `rust` | Full | Raw strings (`r"..."`, `r#"..."#`), block/line comments |
 | Go | `go` | Good | Raw string literals (backticks) included |
 | C | `c` | Good | |
-| C# | `csharp` | Good | Verbatim strings (`@"..."`) included; interpolated (`$"..."`) not scanned |
-| C++ | `cpp` | Good | Raw strings (`R"(...)"`) not scanned |
-| PHP | `php` | Good | Heredoc / nowdoc not scanned |
+| C# | `csharp` | Full | Verbatim (`@"..."`) and interpolated (`$"..."`, `$@"..."`) strings |
+| C++ | `cpp` | Full | Raw strings (`R"delim(...)delim"`) included |
+| PHP | `php` | Full | Heredoc / nowdoc (`<<<EOT`) included |
 | Visual Basic | `vb` | Good | |
 | SQL | `sql` | Good | Keywords matched case-insensitively |
 | R | `r` | Good | |
 | Markdown | `markdown` | Good | Headings, bold, links, blockquotes, code spans/blocks |
+| HTML | `html` | Good | Tag name highlighting, HTML comments |
+| CSS | `css` | Good | Property name highlighting |
 
 **Maturity levels**
 - **Full** — all string types, all comment styles, and any language-specific features (key highlighting, etc.) are handled

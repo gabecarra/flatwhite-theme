@@ -26,6 +26,23 @@ const keywords = new Set([
 
 const langVars = /\b(this)\b/g;
 
+// Raw string literals: R"delim(...)delim" — delim is 0-16 chars, no parens/whitespace/backslash
+function tryScanRawString(text, i, len) {
+  const prev = text[i - 1];
+  if (prev && /\w/.test(prev)) return null;
+  if (text[i] !== "R" || text[i + 1] !== '"') return null;
+  let j = i + 2;
+  const delimStart = j;
+  while (j < len && text[j] !== "(" && j - delimStart <= 16) j++;
+  if (text[j] !== "(") return null;
+  const delim = text.slice(delimStart, j);
+  const start = i;
+  const closer = ")" + delim + '"';
+  const idx = text.indexOf(closer, j + 1);
+  const end = idx === -1 ? len : idx + closer.length;
+  return [{ start, end, type: "string" }, end];
+}
+
 function scan(text) {
   const segs = [];
   const len = text.length;
@@ -34,6 +51,10 @@ function scan(text) {
     const ch = text[i], ch1 = text[i + 1];
     if (ch === "/" && ch1 === "*") { const [s, n] = scanBlockComment(text, i, len); segs.push(s); i = n; continue; }
     if (ch === "/" && ch1 === "/") { const [s, n] = scanLineComment(text, i, len); segs.push(s); i = n; continue; }
+    if (ch === "R" && ch1 === '"') {
+      const raw = tryScanRawString(text, i, len);
+      if (raw) { segs.push(raw[0]); i = raw[1]; continue; }
+    }
     if (ch === '"')                { const [s, n] = scanDoubleQuoted(text, i, len); segs.push(s); i = n; continue; }
     if (ch === "'")                { const [s, n] = scanSingleQuoted(text, i, len); segs.push(s); i = n; continue; }
     i++;
