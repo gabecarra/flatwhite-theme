@@ -81,25 +81,25 @@ All colors are derived from the original `flatwhite-syntax` palette.
 
 Flatwhite applies marker highlighting to the following languages. **Full** means all string types, comment styles, and language-specific features (e.g. key coloring) are handled. **Good** means standard strings and comments work; uncommon constructs noted below may not be highlighted.
 
-| Language         | Maturity | Notes                                                                     |
-| ---------------- | -------- | ------------------------------------------------------------------------- |
-| JavaScript / JSX | ✅ Full  | Template literals, block/line comments                                    |
-| TypeScript / TSX | ✅ Full  | Same scanner as JS                                                        |
-| Python           | ✅ Full  | Triple-quoted strings, `#` comments                                       |
-| Java             | ✅ Full  | Text blocks (`"""`), block/line comments                                  |
-| JSON / JSONC     | ✅ Full  | Key highlighting (blue)                                                   |
-| YAML             | ✅ Full  | Key highlighting (blue), `#` comments                                     |
-| Rust             | ✅ Full  | Raw strings (`r"..."`, `r#"..."#`), block/line comments                   |
-| Go               | 🟡 Good  | Raw string literals (backticks) included                                  |
-| C                | 🟡 Good  |                                                                           |
-| C#               | ✅ Full  | Verbatim (`@"..."`) and interpolated (`$"..."`, `$@"..."`) strings        |
-| C++              | ✅ Full  | Raw strings (`R"delim(...)delim"`) included                               |
-| PHP              | ✅ Full  | Heredoc / nowdoc (`<<<EOT`) included                                      |
-| Visual Basic     | 🟡 Good  |                                                                           |
-| SQL              | 🟡 Good  | Keywords matched case-insensitively                                       |
-| R                | 🟡 Good  |                                                                           |
-| HTML             | 🟡 Good  | Tag name highlighting, HTML comments                                     |
-| CSS              | 🟡 Good  | Property name highlighting                                               |
+| Language         | Maturity | Notes                                                              |
+| ---------------- | -------- | ------------------------------------------------------------------ |
+| JavaScript / JSX | ✅ Full  | Template literals, block/line comments                             |
+| TypeScript / TSX | ✅ Full  | Same scanner as JS                                                 |
+| Python           | ✅ Full  | Triple-quoted strings, `#` comments                                |
+| Java             | ✅ Full  | Text blocks (`"""`), block/line comments                           |
+| JSON / JSONC     | ✅ Full  | Key highlighting (blue)                                            |
+| YAML             | ✅ Full  | Key highlighting (blue), `#` comments                              |
+| Rust             | ✅ Full  | Raw strings (`r"..."`, `r#"..."#`), block/line comments            |
+| Go               | 🟡 Good  | Raw string literals (backticks) included                           |
+| C                | 🟡 Good  |                                                                    |
+| C#               | ✅ Full  | Verbatim (`@"..."`) and interpolated (`$"..."`, `$@"..."`) strings |
+| C++              | ✅ Full  | Raw strings (`R"delim(...)delim"`) included                        |
+| PHP              | ✅ Full  | Heredoc / nowdoc (`<<<EOT`) included                               |
+| Visual Basic     | 🟡 Good  |                                                                    |
+| SQL              | 🟡 Good  | Keywords matched case-insensitively                                |
+| R                | 🟡 Good  |                                                                    |
+| HTML             | 🟡 Good  | Tag name highlighting, HTML comments                               |
+| CSS              | 🟡 Good  | Property name highlighting                                         |
 
 Want to add a language? See [src/languages/ADDING_LANGUAGES.md](src/languages/ADDING_LANGUAGES.md). 🙌
 
