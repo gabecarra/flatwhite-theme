@@ -5,15 +5,25 @@ const { CONSTANTS, NUMBERS } = require("./colors");
 const { span, buildExclusionChecker, defaultScan } = require("./scanner");
 const { KEYWORDS, KEYWORD_FLAGS, LANG_VARS, KEY_HANDLERS, SCANNERS } = require("./languages");
 
+const VARIANT_BY_THEME = { "Flatwhite": "light", "Flatwhite Dark": "dark" };
+
 function applyDecorations(editor, decorationTypes) {
   const theme = vscode.workspace
     .getConfiguration("workbench")
     .get("colorTheme");
-  if (theme !== "Flatwhite") {
-    for (const dt of Object.values(decorationTypes))
+
+  const variant = VARIANT_BY_THEME[theme];
+
+  if (!variant) {
+    for (const dt of Object.values(decorationTypes.light))
+      editor.setDecorations(dt, []);
+    for (const dt of Object.values(decorationTypes.dark))
       editor.setDecorations(dt, []);
     return;
   }
+
+  for (const dt of Object.values(decorationTypes[variant === "light" ? "dark" : "light"]))
+    editor.setDecorations(dt, []);
 
   const doc = editor.document;
   const text = doc.getText();
@@ -23,7 +33,7 @@ function applyDecorations(editor, decorationTypes) {
 
   const result = computeRanges(text, lang, doc);
   for (const [key, ranges] of Object.entries(result)) {
-    editor.setDecorations(decorationTypes[key], ranges);
+    editor.setDecorations(decorationTypes[variant][key], ranges);
   }
 }
 
