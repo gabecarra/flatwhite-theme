@@ -98,8 +98,10 @@ Flatwhite applies marker highlighting to the following languages. **Full** means
 | Visual Basic     | 🟡 Good  |                                                                    |
 | SQL              | 🟡 Good  | Keywords matched case-insensitively                                |
 | R                | 🟡 Good  |                                                                    |
+| Markdown         | 🟡 Good  | Headings, bold, links, blockquotes, code spans/blocks               |
 | HTML             | 🟡 Good  | Tag name highlighting, HTML comments                               |
 | CSS              | 🟡 Good  | Property name highlighting                                         |
+| Shell            | 🟡 Good  | Heredocs, `$VAR`/`${VAR}` variable highlighting                    |
 
 Want to add a language? See [src/languages/ADDING_LANGUAGES.md](src/languages/ADDING_LANGUAGES.md). 🙌
 

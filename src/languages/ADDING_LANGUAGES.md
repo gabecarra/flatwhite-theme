@@ -24,6 +24,7 @@ Each language is a single file in `src/languages/`. The registry (`index.js`) pi
 | Markdown | `markdown` | Good | Headings, bold, links, blockquotes, code spans/blocks |
 | HTML | `html` | Good | Tag name highlighting, HTML comments |
 | CSS | `css` | Good | Property name highlighting |
+| Shell | `shellscript` | Good | Heredocs, `$VAR`/`${VAR}` variable highlighting |
 
 **Maturity levels**
 - **Full** — all string types, all comment styles, and any language-specific features (key highlighting, etc.) are handled

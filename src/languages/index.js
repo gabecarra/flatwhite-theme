@@ -19,6 +19,7 @@ const defs = [
   require("./markdown"),
   require("./html"),
   require("./css"),
+  require("./shell"),
 ];
 
 const KEYWORDS      = {};
