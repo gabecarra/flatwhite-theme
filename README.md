@@ -33,7 +33,7 @@ The result is a calm, readable editor where structure jumps out without ever fee
 1. Open the Extensions panel (`Ctrl+Shift+X`)
 2. Search for **Flatwhite**
 3. Click **Install**
-4. Open the Command Palette (`Ctrl+Shift+P`) → **Preferences: Color Theme** → **Flatwhite**
+4. Open the Command Palette (`Ctrl+Shift+P`) → **Preferences: Color Theme** → **Flatwhite** (or **Flatwhite Dark**)
 
 ### From source
 
@@ -61,6 +61,20 @@ All colors are derived from the original `flatwhite-syntax` palette.
 | 🟠 Orange marker     | `rgba(240, 140, 0, 0.18)`   |
 | 🔷 UI accent         | `#7A4E8A`                   |
 
+**Flatwhite Dark** uses the same marker hues at a higher opacity against a warm dark ground.
+
+| Role                 | Hex                         |
+| -------------------- | --------------------------- |
+| 🟫 Editor background | `#2A2520`                   |
+| ⬜ Base text         | `#D9D2C7`                   |
+| 🩶 Comments          | `#8A8172`                   |
+| 🟣 Purple marker     | `rgba(206, 92, 255, 0.26)`  |
+| 🟢 Green marker      | `rgba(132, 189, 0, 0.26)`   |
+| 🩵 Teal marker       | `rgba(0, 189, 163, 0.26)`   |
+| 🔵 Blue marker       | `rgba(117, 163, 255, 0.26)` |
+| 🟠 Orange marker     | `rgba(240, 140, 0, 0.26)`   |
+| 🔷 UI accent         | `#9B5FAE`                   |
+
 ---
 
 ## 🌐 Language support
@@ -75,17 +89,39 @@ Flatwhite applies marker highlighting to the following languages. **Full** means
 | Java             | ✅ Full  | Text blocks (`"""`), block/line comments                                  |
 | JSON / JSONC     | ✅ Full  | Key highlighting (blue)                                                   |
 | YAML             | ✅ Full  | Key highlighting (blue), `#` comments                                     |
-| Rust             | 🟡 Good  | Raw strings (`r"..."`, `r#"..."#`) not scanned                            |
+| Rust             | ✅ Full  | Raw strings (`r"..."`, `r#"..."#`), block/line comments                   |
 | Go               | 🟡 Good  | Raw string literals (backticks) included                                  |
 | C                | 🟡 Good  |                                                                           |
-| C#               | 🟡 Good  | Verbatim strings (`@"..."`) included; interpolated (`$"..."`) not scanned |
-| C++              | 🟡 Good  | Raw strings (`R"(...)"`) not scanned                                      |
-| PHP              | 🟡 Good  | Heredoc / nowdoc not scanned                                              |
+| C#               | ✅ Full  | Verbatim (`@"..."`) and interpolated (`$"..."`, `$@"..."`) strings        |
+| C++              | ✅ Full  | Raw strings (`R"delim(...)delim"`) included                               |
+| PHP              | ✅ Full  | Heredoc / nowdoc (`<<<EOT`) included                                      |
 | Visual Basic     | 🟡 Good  |                                                                           |
 | SQL              | 🟡 Good  | Keywords matched case-insensitively                                       |
 | R                | 🟡 Good  |                                                                           |
+| HTML             | 🟡 Good  | Tag name highlighting, HTML comments                                     |
+| CSS              | 🟡 Good  | Property name highlighting                                               |
 
 Want to add a language? See [src/languages/ADDING_LANGUAGES.md](src/languages/ADDING_LANGUAGES.md). 🙌
+
+---
+
+## 📝 Changelog
+
+### 1.4.0
+
+- ✨ Added **Flatwhite Dark** theme variant — same marker palette at higher opacity against a warm dark background
+- ✨ Rust, C++, C#, and PHP scanners upgraded to **Full** maturity:
+  - Rust: raw strings (`r"..."`, `r#"..."#`, `br"..."`)
+  - C++: raw strings (`R"delim(...)delim"`)
+  - C#: interpolated strings (`$"..."`, `$@"..."`, `@$"..."`)
+  - PHP: heredoc / nowdoc (`<<<EOT ... EOT;`)
+- 🐛 Fixed keyword markers being overridden by VS Code's semantic highlighting (e.g. Python `and`/`or`/`not`)
+
+### 1.3.0
+
+- ✨ Added HTML and CSS language support (tag name and property name highlighting)
+- ✨ Added JSX tag handling to JavaScript and TypeScript
+- 🐛 Fixed `NUMBERS` regex matching trailing characters
 
 ---
 

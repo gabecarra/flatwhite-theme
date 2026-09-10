@@ -2,7 +2,7 @@
   "name": "flatwhite-theme",
   "displayName": "Flatwhite Theme",
   "description": "Minimal warm light theme with marker-style syntax highlighting, ported from Atom flatwhite-syntax by Dmytro Biletskyy",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "publisher": "gabrielCarraretto",
   "author": {
     "name": "Gabriel Carraretto",
@@ -46,6 +46,11 @@
         "label": "Flatwhite",
         "uiTheme": "vs",
         "path": "./themes/flatwhite-color-theme.json"
+      },
+      {
+        "label": "Flatwhite Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/flatwhite-dark-color-theme.json"
       }
     ]
   }
