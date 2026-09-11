@@ -24,6 +24,11 @@ const blockScalarPat = /^([ \t]*)(?:- )?[a-zA-Z_$][\w$-]*:[ \t]+[|>][+-]?\d?[ \t
 // numbers.
 const hyphenTokenPat = /\b[A-Za-z0-9]+(?:-[A-Za-z0-9]+)+\b/g;
 
+// A URI (`scheme://...`) is a single opaque address, not a numeric literal —
+// e.g. the `2024`/`01`/`02` path segments in `http://tems.org/2024/temscore#`
+// aren't numbers. Exclude these wherever they appear, same as hyphenTokenPat.
+const urlTokenPat = /\b[a-zA-Z][a-zA-Z0-9+.-]*:\/\/\S+/g;
+
 // Finds the end of the plain-scalar value starting at `valueStart`: up to
 // end of line, or an inline `#` comment if one comes first, with trailing
 // whitespace trimmed off.
@@ -67,6 +72,13 @@ function pushHyphenTokenSegs(text, segs) {
   }
 }
 
+function pushUrlTokenSegs(text, segs) {
+  urlTokenPat.lastIndex = 0;
+  for (const m of text.matchAll(urlTokenPat)) {
+    segs.push({ start: m.index, end: m.index + m[0].length, type: "text" });
+  }
+}
+
 function pushPlainValueSegs(text, len, segs) {
   keyStartPat.lastIndex = 0;
   for (const m of text.matchAll(keyStartPat)) {
@@ -94,6 +106,7 @@ function scan(text) {
 
   pushBlockScalarSegs(text, len, segs);
   pushHyphenTokenSegs(text, segs);
+  pushUrlTokenSegs(text, segs);
   pushPlainValueSegs(text, len, segs);
 
   segs.sort((a, b) => a.start - b.start);
