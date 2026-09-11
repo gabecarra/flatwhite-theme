@@ -1,8 +1,8 @@
 ![Flatwhite Theme Banner](https://raw.githubusercontent.com/gabecarra/flatwhite-theme/main/assets/flatwhite.png)
 
-# 🎨 Flatwhite — A warm, minimal light theme for VS Code
+# 🎨 Flatwhite — A warm, minimal theme for VS Code
 
-Most syntax themes color your code by changing text color. Flatwhite does something different: it highlights keywords, strings, and constants with **colored backgrounds** — the way you'd mark up a printed page with a highlighter pen. 🖊️
+Most syntax themes color your code by changing text color. Flatwhite does something different: it highlights keywords, strings, and constants with **colored backgrounds** — the way you'd mark up a printed page with a highlighter pen. 🖊️ Available in **light** and **dark** variants.
 
 The result is a calm, readable editor where structure jumps out without ever feeling aggressive, while keeping a constant 6:1 contrast between text and background colors 🤓 (easy on the eyes).
 
@@ -88,7 +88,7 @@ Flatwhite applies marker highlighting to the following languages. **Full** means
 | Python           | ✅ Full  | Triple-quoted strings, `#` comments                                |
 | Java             | ✅ Full  | Text blocks (`"""`), block/line comments                           |
 | JSON / JSONC     | ✅ Full  | Key highlighting (blue)                                            |
-| YAML             | ✅ Full  | Key highlighting (blue), `#` comments                              |
+| YAML             | ✅ Full  | Key highlighting (blue), `#` comments, Docker Compose files         |
 | Rust             | ✅ Full  | Raw strings (`r"..."`, `r#"..."#`), block/line comments            |
 | Go               | 🟡 Good  | Raw string literals (backticks) included                           |
 | C                | 🟡 Good  |                                                                    |
@@ -108,6 +108,12 @@ Want to add a language? See [src/languages/ADDING_LANGUAGES.md](src/languages/AD
 ---
 
 ## 📝 Changelog
+
+### 1.4.2
+
+- ✨ YAML scanner now also applies to Docker Compose files
+- 🎨 Increased foreground contrast across the light theme's marker tokens (keywords, strings, regex, numbers, constants, Markdown) for better readability against their highlighted backgrounds
+- ✨ Added Shell language support (heredocs, `$VAR`/`${VAR}` variable highlighting)
 
 ### 1.4.0
 

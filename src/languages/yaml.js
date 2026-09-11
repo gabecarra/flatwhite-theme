@@ -62,7 +62,7 @@ function applyKeys(text, doc, _excluded, ranges, span) {
 }
 
 module.exports = {
-  ids: ["yaml"],
+  ids: ["yaml", "dockercompose"],
   scan,
   applyKeys,
 };

@@ -11,7 +11,7 @@ Each language is a single file in `src/languages/`. The registry (`index.js`) pi
 | Python | `python` | Full | Triple-quoted strings, `#` comments |
 | Java | `java` | Full | Text blocks (`"""`), block/line comments |
 | JSON / JSONC | `json`, `jsonc` | Full | Key highlighting (blue) |
-| YAML | `yaml` | Full | Key highlighting (blue), `#` comments |
+| YAML | `yaml`, `dockercompose` | Full | Key highlighting (blue), `#` comments |
 | Rust | `rust` | Full | Raw strings (`r"..."`, `r#"..."#`), block/line comments |
 | Go | `go` | Good | Raw string literals (backticks) included |
 | C | `c` | Good | |
