@@ -493,15 +493,21 @@
 
     {
       "name": "YAML — keys",
-      "scope": [
-        "entity.name.tag.yaml",
-        "string.unquoted.plain.out.yaml",
-        "string.unquoted.yaml"
-      ],
+      "scope": ["entity.name.tag.yaml"],
       "settings": {
         "foreground": "#C4D0F0",
         "background": "rgba(117, 163, 255, 0.26)"
       }
+    },
+    {
+      "name": "YAML — plain scalar values (no marker; only quoted strings get the green marker)",
+      "scope": [
+        "string.unquoted.yaml",
+        "string.unquoted.plain.out.yaml",
+        "string.unquoted.plain.in.yaml",
+        "string.unquoted.block.yaml"
+      ],
+      "settings": { "foreground": "#D9D2C7" }
     },
 
     {

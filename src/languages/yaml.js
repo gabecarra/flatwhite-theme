@@ -10,6 +10,20 @@ const { scanLineComment, scanDoubleQuoted, scanSingleQuoted } = require("../scan
 const keyStartPat = /^[ \t]*(?:- )?[a-zA-Z_$][\w$-]*:[ \t]+/mg;
 const OPENERS = new Set(["'", '"', "{", "}", "[", "]", "|", ">", "&", "*", "#"]);
 
+// `key: |` / `key: >` (with optional chomping/indentation indicators) starts
+// a block scalar whose body is the following more-indented lines. That body
+// is free-form text — e.g. prose in a `description: |` block — not code, so
+// it must not be scanned for keywords/numbers/constants.
+const blockScalarPat = /^([ \t]*)(?:- )?[a-zA-Z_$][\w$-]*:[ \t]+[|>][+-]?\d?[ \t]*(?:#.*)?$/mg;
+
+// A hyphenated alphanumeric token containing a digit — e.g. an ISO code
+// (`HR-18`) or a version-like id (`3166-1`) — is a single opaque value, not
+// a numeric literal with a stray hyphen next to it. Exclude these wherever
+// they appear (including inside flow collections like `[Istria, HR-18]`,
+// which aren't otherwise parsed) so the embedded digits aren't mistaken for
+// numbers.
+const hyphenTokenPat = /\b[A-Za-z0-9]+(?:-[A-Za-z0-9]+)+\b/g;
+
 // Finds the end of the plain-scalar value starting at `valueStart`: up to
 // end of line, or an inline `#` comment if one comes first, with trailing
 // whitespace trimmed off.
@@ -20,6 +34,37 @@ function findPlainValueEnd(text, valueStart, len) {
   let valueEnd = commentIdx !== -1 && commentIdx < lineEnd ? commentIdx : lineEnd;
   while (valueEnd > valueStart && (text[valueEnd - 1] === " " || text[valueEnd - 1] === "\t")) valueEnd--;
   return valueEnd;
+}
+
+function pushBlockScalarSegs(text, len, segs) {
+  blockScalarPat.lastIndex = 0;
+  for (const m of text.matchAll(blockScalarPat)) {
+    const indent = m[1].length;
+    let pos = m.index + m[0].length;
+    if (text[pos] === "\n") pos++;
+    const start = pos;
+    let end = start;
+    while (pos < len) {
+      let lineEnd = text.indexOf("\n", pos);
+      if (lineEnd === -1) lineEnd = len;
+      const line = text.slice(pos, lineEnd);
+      if (line.trim().length > 0) {
+        const lineIndent = line.match(/^[ \t]*/)[0].length;
+        if (lineIndent <= indent) break;
+      }
+      end = lineEnd;
+      pos = lineEnd + 1;
+    }
+    if (end > start) segs.push({ start, end, type: "text" });
+  }
+}
+
+function pushHyphenTokenSegs(text, segs) {
+  hyphenTokenPat.lastIndex = 0;
+  for (const m of text.matchAll(hyphenTokenPat)) {
+    if (!/\d/.test(m[0])) continue;
+    segs.push({ start: m.index, end: m.index + m[0].length, type: "text" });
+  }
 }
 
 function pushPlainValueSegs(text, len, segs) {
@@ -47,6 +92,8 @@ function scan(text) {
     i++;
   }
 
+  pushBlockScalarSegs(text, len, segs);
+  pushHyphenTokenSegs(text, segs);
   pushPlainValueSegs(text, len, segs);
 
   segs.sort((a, b) => a.start - b.start);
